@@ -9,15 +9,21 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  flutter_lints: ^5.0.0 # Mise à jour pour éviter les erreurs
-  flutter_web_auth_2: 3.1.2
-  appwrite: ^15.0.2
-  js: ^0.6.4
-  device_info_plus: 10.1.2
+  flutter_lints: ^5.0.0 # Mise à jour vers la dernière version disponible
+  flutter_web_auth_2: ^3.1.2
+  js: ^0.7.2
+  device_info_plus: ^10.1.2
+  appwrite: ^15.0.2 # Vérifie la dernière version disponible avec `flutter pub outdated`
+  provider: ^6.1.0 # Ajout pour la gestion d'état simple
+  http: ^1.4.0 # Utile pour les requêtes API
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  integration_test:
+    sdk: flutter # Ajout des tests d’intégration
+  mockito: ^5.4.2 # Pour les tests unitaires
+  build_runner: ^2.4.6 # Génération de code
 
 flutter:
   uses-material-design: true

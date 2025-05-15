@@ -11,19 +11,27 @@ class MessageService {
 
   Future<List<Document>> getMessages() async {
     try {
-      DocumentList response = await database.listDocuments(
+      final response = await database.listDocuments(
         databaseId: databaseId,
         collectionId: collectionId,
       );
       return response.documents;
+    } on AppwriteException catch (e) {
+      print(
+        '❌ Erreur Appwrite lors de la récupération des messages: ${e.message}',
+      );
+      return [];
     } catch (e) {
-      print('Erreur lors de la récupération des messages: $e');
+      print('❌ Erreur inconnue lors de la récupération des messages: $e');
       return [];
     }
   }
 
   Future<void> sendMessage(
-      String senderID, String content, String? fileURL) async {
+    String senderID,
+    String content,
+    String? fileURL,
+  ) async {
     try {
       await database.createDocument(
         databaseId: databaseId,
@@ -36,8 +44,11 @@ class MessageService {
           'fileURL': fileURL,
         },
       );
+      print('✅ Message envoyé avec succès');
+    } on AppwriteException catch (e) {
+      print('❌ Erreur Appwrite lors de l\'envoi du message: ${e.message}');
     } catch (e) {
-      print('Erreur lors de l\'envoi du message: $e');
+      print('❌ Erreur inconnue lors de l\'envoi du message: $e');
     }
   }
 }

@@ -37,8 +37,17 @@ android {
     }
 }
 
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
 dependencies {
-    implementation("io.appwrite:sdk-for-flutter:0.5.0-dev.1") // Version spécifique d'Appwrite
+    implementation("io.appwrite:sdk-for-flutter:16.0.0") // ✅ Vérification de la dernière version disponible
 }
 
 flutter {
